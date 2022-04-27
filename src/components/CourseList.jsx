@@ -19,15 +19,17 @@ export default function CourseList({ courses, refreshCourses }) {
 
       <h2 className="mt-5 mb-3">Already Purchased</h2>
 
-      {courses
-        .filter((course) => course.purchased)
-        .map((course) => (
-          <Course
-            course={course}
-            key={course.id}
-            refreshCourses={refreshCourses}
-          />
-        ))}
+      <div className="list-group mb-5">
+        {courses
+          .filter((course) => course.purchased)
+          .map((course) => (
+            <Course
+              course={course}
+              key={course.id}
+              refreshCourses={refreshCourses}
+            />
+          ))}
+      </div>
     </div>
   )
 }
