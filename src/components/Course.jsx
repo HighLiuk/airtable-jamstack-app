@@ -1,10 +1,16 @@
+import axios from "axios"
+
 export default function Course({ course, refreshCourses }) {
   const markCoursePurchased = async () => {
-    // TODO: mark course as purchased
+    await axios.put("/api/courses", { id: course.id, purchased: true })
+
+    refreshCourses()
   }
 
   const deleteCourse = async () => {
-    // TODO: delete course
+    await axios.delete("/api/courses", { data: { id: course.id } })
+
+    refreshCourses()
   }
 
   return (

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react"
 import CourseList from "./components/CourseList"
 import CourseForm from "./components/CourseForm"
+import axios from "axios"
 
 export default function App() {
   const [courses, setCourses] = useState([])
 
   const loadCourses = async () => {
-    // TODO: load the courses
+    const { data } = await axios.get("/api/courses")
+
+    setCourses(data)
   }
 
   useEffect(() => {

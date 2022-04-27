@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Tags from "./Tags"
+import axios from "axios"
 
 export default function CourseForm({ courseAdded }) {
   const [name, setName] = useState("")
@@ -15,7 +16,9 @@ export default function CourseForm({ courseAdded }) {
 
   const submitCourse = async (e) => {
     e.preventDefault()
-    // TODO: Create the course
+
+    await axios.post("/api/courses", { name, link, tags })
+
     resetForm()
     courseAdded()
   }
